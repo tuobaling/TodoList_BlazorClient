@@ -1,0 +1,14 @@
+﻿@page "/TodoList/Index"
+@inject HttpClient Http
+@using TodoList_BlazorClient.Models.ViewModels;
+
+
+
+@code {
+    private TodoList_ViewModel[] todolist;
+
+    protected override async Task OnInitializedAsync()
+    {
+        todolist = await Http.GetFromJsonAsync<TodoList_ViewModel[]>("api/TodoList_API");
+    }
+}
